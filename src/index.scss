@@ -1,5 +1,5 @@
 // dracula:
-$background: #282a36;
+$background: #44475a;
 $foreground: #f8f8f2;
 $board: #f8f8f2;
 $cyan: #8be9fd;
@@ -21,6 +21,8 @@ body {
   font-family: "Helvetica Neue", "Roboto", -apple-system, BlinkMacSystemFont, "Ubuntu", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: $background;
 }
 
 .spin {
