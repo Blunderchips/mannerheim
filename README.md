@@ -1,3 +1,25 @@
+# Mannerhiem Tower Defence
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Mannerhiem Tower Defence](#Mannerhiem-Tower-Defence)
+  - [Available Scripts](#Available-Scripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
+    - [`npm run eject`](#npm-run-eject)
+  - [Learn More](#Learn-More)
+    - [Code Splitting](#Code-Splitting)
+    - [Analyzing the Bundle Size](#Analyzing-the-Bundle-Size)
+    - [Making a Progressive Web App](#Making-a-Progressive-Web-App)
+    - [Advanced Configuration](#Advanced-Configuration)
+    - [Deployment](#Deployment)
+    - [`npm run build` fails to minify](#npm-run-build-fails-to-minify)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
