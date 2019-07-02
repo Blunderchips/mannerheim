@@ -1,13 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.scss';
-
-import Button from 'react-bootstrap/Button';
+import Menu from './Menu.js';
 
 function App() {
   return (
     <div>
-      <Button>asdasd</Button>
+      <Menu></Menu>
     </div>
   );
 }
