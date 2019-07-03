@@ -22,7 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: $background;
+  // background: $background;
 }
 
 .spin {
@@ -37,6 +37,18 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+.background {
+  width: 99%;
+  height: 99%;
+
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+
+  background: $background;
 }
 
 // .spacer {

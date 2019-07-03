@@ -1,22 +1,27 @@
 import React from 'react';
+
 import Particles from 'react-particles-js';
+import Stage from './engine/Stage.js';
 
 function App() {
   return (
     <div>
+      <Stage></Stage>
+
       <Particles
+      className="background"
         params={{
           "particles": {
             "number": {
-              "value": 60,
+              "value": 100,
               "density": {
                 "enable": true,
-                "value_area": 1500
+                "value_area": 2000
               }
             },
             "line_linked": {
               "enable": true,
-              "opacity": 0.02
+              "opacity": 0.07
             },
             "move": {
               "direction": "right",
@@ -29,7 +34,7 @@ function App() {
               "anim": {
                 "enable": true,
                 "speed": 1,
-                "opacity_min": 0.05
+                "opacity_min": 0.1
               }
             }
           },
