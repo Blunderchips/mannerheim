@@ -1,15 +1,23 @@
 import React from 'react';
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Particles from 'react-particles-js';
 import ReactCursorPosition from 'react-cursor-position';
+
 import Stage from './engine/Stage.js';
+import Menu from './Menu.js';
 
 function App() {
   return (
     <div>
-      <ReactCursorPosition>
+      {/* <ReactCursorPosition>
         <Stage></Stage>
-      </ReactCursorPosition>
+      </ReactCursorPosition> */}
+
+      <Router>
+        <Route path="/stage/" component={Stage} />
+        <Route path="/menu/" component={Menu} />
+      </Router>
 
       <Particles
         className="background"
