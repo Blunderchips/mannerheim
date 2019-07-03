@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Vector2 from './Vector2';
-
 /**
  * 
  */
@@ -11,7 +9,7 @@ class Stage extends React.Component {
 
     constructor(props) {
         super(props);
-        this.position = new Vector2(200, 100);
+        this.position = { x: 100, y: 200 };
     }
 
     render() {
