@@ -1,15 +1,18 @@
 import React from 'react';
 
 import Particles from 'react-particles-js';
+import ReactCursorPosition from 'react-cursor-position';
 import Stage from './engine/Stage.js';
 
 function App() {
   return (
     <div>
-      <Stage></Stage>
+      <ReactCursorPosition>
+        <Stage></Stage>
+      </ReactCursorPosition>
 
       <Particles
-      className="background"
+        className="background"
         params={{
           "particles": {
             "number": {

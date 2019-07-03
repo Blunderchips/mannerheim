@@ -7,7 +7,7 @@ import Vector2 from './Vector2';
  */
 class Stage extends React.Component {
 
-    position;
+    position; // Vector2
 
     constructor(props) {
         super(props);
@@ -15,6 +15,8 @@ class Stage extends React.Component {
     }
 
     render() {
+        // console.log(this.props.position);
+
         return (
             <svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
                 <g>
