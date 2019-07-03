@@ -3,16 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "doctoc": "^1.4.0"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "clean": "npx sort-package-json && doctoc .",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
@@ -25,6 +20,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "dependencies": {
     "@types/jest": "^24.0.15",
@@ -43,5 +41,8 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "doctoc": "^1.4.0"
   }
 }
