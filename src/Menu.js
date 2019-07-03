@@ -30,7 +30,6 @@ class Menu extends React.Component {
     }
 
     _onToggle() {
-        console.log('sdf');
         this.setState({
             hidden: !this.state.hidden
         });
