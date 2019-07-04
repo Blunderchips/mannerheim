@@ -5,7 +5,7 @@ import Particles from 'react-particles-js';
 import ReactCursorPosition from 'react-cursor-position';
 
 import Stage from './engine/Stage.js';
-import Menu from './Menu.js';
+import Menu from './engine/Menu.js';
 
 function App() {
   return (
