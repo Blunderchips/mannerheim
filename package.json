@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "clean": "npx sort-package-json && doctoc .",
+    "clean": "types-installer install && npx sort-package-json",
     "eject": "react-scripts eject",
     "start": "react-scripts start",
     "test": "react-scripts test"
@@ -25,11 +25,15 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "@types/bootstrap": "^4.3.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.0.10",
-    "@types/react": "^16.8.22",
+    "@types/node-sass": "^4.11.0",
+    "@types/react": "^16.8.23",
+    "@types/react-bootstrap": "^0.32.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.4",
+    "@types/typescript": "^2.0.0",
     "bootstrap": "^4.3.1",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
@@ -43,6 +47,7 @@
     "typescript": "^3.5.2"
   },
   "devDependencies": {
-    "doctoc": "^1.4.0"
+    "doctoc": "^1.4.0",
+    "types-installer": "^1.6.3"
   }
 }
