@@ -14,8 +14,8 @@ class Mob extends React.Component {
 
     render() {
         const mobStyle = {
-            height: '5%',
             width: '5%',
+            height: 'auto',
             position: 'absolute',
             left: this.state.position.x,
             top: this.state.position.y
