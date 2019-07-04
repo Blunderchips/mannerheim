@@ -24,7 +24,10 @@ class Menu extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{
+                position: 'absolute', left: '50%', top: '40%',
+                transform: 'translate(-50%, -60%)'
+            }}>
                 {
                     Menus['main'].buttons.map((btn, i) => {
                         return (
@@ -40,7 +43,7 @@ class Menu extends React.Component {
                         );
                     })
                 }
-            </div>
+            </ div>
         );
     }
 
