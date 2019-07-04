@@ -8,7 +8,6 @@ class Mob extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            position: { x: 100, y: 100 }
         };
     }
 
@@ -17,8 +16,8 @@ class Mob extends React.Component {
             width: '5%',
             height: 'auto',
             position: 'absolute',
-            left: this.state.position.x,
-            top: this.state.position.y
+            left: this.props.position.x,
+            top: this.props.position.y
         };
 
         return (

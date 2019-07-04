@@ -35,7 +35,7 @@ class Menu extends React.Component {
                                 <ParticleEffectButton
                                     hidden={!this.isBtnHidden(i)}
                                     onComplete={this._onAnimationComplete}
-                                    color={'#44475a'}>
+                                    color={'#ffb86c'}>
                                     <button onClick={() => { this.onClick(i) }}>{btn.title}</button>
                                 </ParticleEffectButton>
                                 <br />
