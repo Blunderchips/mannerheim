@@ -1,11 +1,9 @@
 import React from 'react';
-import Mob from './Mob';
 
 /**
  * 
  */
-class Stage extends React.Component {
-
+class Board extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,11 +14,11 @@ class Stage extends React.Component {
 
     render() {
         return (
-            <div>
-                <Mob />
-            </div>
+            <svg>
+                {/* <rect width="800" height="900" style={{ fill: 'red' }} /> */}
+            </svg>
         );
     }
 }
 
-export default Stage;
+export default Board;
