@@ -14,7 +14,7 @@ class MousePosition extends React.Component {
                 left: '0px',
                 top: '0px'
             }} className="debug">
-                x={position.x}, y={position.y}
+                x={position.x},&nbsp;y={position.y}
             </div>
         );
     }
