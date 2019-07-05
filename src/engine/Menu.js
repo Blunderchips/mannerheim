@@ -18,13 +18,14 @@ class Menu extends React.Component {
         this._onToggle = this.onClick.bind(this);
     }
 
-    componentDidMount() {
-        console.log(Menus['main']);
-    }
+    // componentDidMount() {
+    //     console.log(Menus['main']);
+    // }
 
     render() {
         return (
             <div style={{
+                // centre centre, almost
                 position: 'absolute', left: '50%', top: '40%',
                 transform: 'translate(-50%, -60%)'
             }}>
