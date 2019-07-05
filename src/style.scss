@@ -51,10 +51,13 @@ body {
   background: $background;
 }
 
-.debug {
-  // TODO: highscontrast
+polyline {
+  fill: none;
+  stroke: black;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
-
 // div {
 // width: 99% !important;
 // height: 99% !important;

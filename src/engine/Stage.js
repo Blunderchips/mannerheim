@@ -1,19 +1,16 @@
 import React from 'react';
 import Mob from './Mob';
+import Board from './Board';
 
 /**
  * 
  */
 class Stage extends React.Component {
 
-    mobs = [
-        // { x: 100, y: 100 }
-    ];
-
     constructor(props) {
         super(props);
         this.state = {
-
+            mobs: []
         };
 
         this.add = this.add.bind(this);
@@ -28,16 +25,20 @@ class Stage extends React.Component {
                     height: 450
                 }}>
                 {
-                    this.mobs.map((mob, i) => {
+                    this.state.mobs.map((mob, i) => {
                         return <Mob key={i} position={mob} />
                     })
                 }
+                <Board />
             </div>
         );
     }
 
     add() {
-        this.mobs.push(this.props.position);
+        let _mobs = this.state.mobs;
+        _mobs.push(this.props.position);
+
+        this.setState({ mobs: _mobs });
     }
 }
 
