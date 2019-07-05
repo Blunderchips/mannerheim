@@ -1,5 +1,5 @@
 import React from 'react';
-import Mob from './Mob';
+import Tower from './Tower';
 import Board from './Board';
 
 /**
@@ -10,7 +10,7 @@ class Stage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            mobs: []
+            towers: []
         };
 
         this.add = this.add.bind(this);
@@ -25,8 +25,8 @@ class Stage extends React.Component {
                     height: 450
                 }}>
                 {
-                    this.state.mobs.map((mob, i) => {
-                        return <Mob key={i} position={mob} />
+                    this.state.towers.map((position, i) => {
+                        return <Tower key={i} position={position} />
                     })
                 }
                 <Board />
@@ -35,10 +35,10 @@ class Stage extends React.Component {
     }
 
     add() {
-        let _mobs = this.state.mobs;
-        _mobs.push(this.props.position);
+        let _towers = this.state.towers;
+        _towers.push(this.props.position);
 
-        this.setState({ mobs: _mobs });
+        this.setState({ towers: _towers });
     }
 }
 
