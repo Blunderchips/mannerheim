@@ -15,9 +15,18 @@ class Board extends React.Component {
     render() {
         return (
             <svg style={{ width: '800', height: '450' }}>
-                <polyline points="20,20 40,25 60,40 80,120 120,140 200,180" />
+                <polyline style={{
+                    fill: 'none',
+                    stroke: '282a36',
+                    strokeWidth: '15',
+                    strokeOpacity: '0.6'
+                }} points={this.getPoints()} />
             </svg>
         );
+    }
+
+    getPoints() {
+        return "50,50 50,100 100,100 100,50 150,50 150,200";
     }
 }
 
