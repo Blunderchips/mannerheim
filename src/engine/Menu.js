@@ -15,13 +15,10 @@ class Menu extends React.Component {
             hidden: false,
             buttons: {}
         };
+
         this.onToggle = this.onClick.bind(this);
         this.onAnimationComplete = this.onAnimationComplete.bind(this);
     }
-
-    // componentDidMount() {
-    //     console.log(Menus['main']);
-    // }
 
     render() {
         return (
@@ -58,8 +55,8 @@ class Menu extends React.Component {
         });
     }
 
-    isBtnHidden(btn) {
-        return !this.state.buttons[btn];
+    isBtnHidden(btnID) {
+        return !this.state.buttons[btnID];
     }
 
     onAnimationComplete(btn) {
