@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Particles from 'react-particles-js';
 
 import Game from './engine/Game.js';
