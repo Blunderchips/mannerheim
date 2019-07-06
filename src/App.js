@@ -5,7 +5,6 @@ import Particles from 'react-particles-js';
 
 import Game from './engine/Game.js';
 import Menu from './engine/Menu.js';
-import NotFound from './util/NotFound.js';
 
 function App() {
   return (
@@ -17,7 +16,7 @@ function App() {
       </ReactCursorPosition> */}
 
       <Router>
-        <Redirect from="/" exact to="/menu" />
+        {/* <Redirect from="/" exact to="/menu" /> */}
         <Route path="/game/" component={Game} />
         <Route path="/menu/" component={Menu} />
         {/* <Route path="/" exact component={NotFound} /> */}
