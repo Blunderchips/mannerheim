@@ -15,7 +15,8 @@ class Menu extends React.Component {
             hidden: false,
             buttons: {}
         };
-        this._onToggle = this.onClick.bind(this);
+        this.onToggle = this.onClick.bind(this);
+        this.onAnimationComplete = this.onAnimationComplete.bind(this);
     }
 
     // componentDidMount() {
@@ -35,7 +36,7 @@ class Menu extends React.Component {
                             <div key={i}>
                                 <ParticleEffectButton
                                     hidden={!this.isBtnHidden(i)}
-                                    onComplete={this._onAnimationComplete}
+                                    onComplete={() => { this.onAnimationComplete(btn) }}
                                     color={'#ffb86c'}>
                                     <button onClick={() => { this.onClick(i) }}>{btn.title}</button>
                                 </ParticleEffectButton>
@@ -59,6 +60,10 @@ class Menu extends React.Component {
 
     isBtnHidden(btn) {
         return !this.state.buttons[btn];
+    }
+
+    onAnimationComplete(btn) {
+        this.props.history.push(`/${btn.route}`)
     }
 }
 
