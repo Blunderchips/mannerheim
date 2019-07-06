@@ -8,7 +8,14 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            points: [
+                { x: 50, y: 50 },
+                { x: 50, y: 100 },
+                { x: 100, y: 100 },
+                { x: 100, y: 50 },
+                { x: 150, y: 50 },
+                { x: 150, y: 200 }
+            ]
         };
     }
 
@@ -26,7 +33,11 @@ class Board extends React.Component {
     }
 
     getPoints() {
-        return "50,50 50,100 100,100 100,50 150,50 150,200";
+        let rtn = '';
+        this.state.points.forEach(point => {
+            rtn += `${point.x},${point.y} `;
+        });
+        return rtn;
     }
 }
 

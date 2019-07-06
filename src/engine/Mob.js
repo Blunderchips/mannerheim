@@ -10,12 +10,6 @@ const SIZE = 2.5;
  */
 class Mob extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
     render() {
         const mobStyle = {
             width: `${SIZE}%`,

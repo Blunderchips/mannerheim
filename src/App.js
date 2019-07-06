@@ -6,6 +6,8 @@ import Particles from 'react-particles-js';
 import Game from './engine/Game.js';
 import Menu from './engine/Menu.js';
 
+export const HELLO = 'adf';
+
 function App() {
   return (
     <div style={{

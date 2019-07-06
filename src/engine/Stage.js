@@ -3,6 +3,8 @@ import Tower from './Tower';
 import Board from './Board';
 import Mob from './Mob';
 
+import { KEY_SPACE } from './Util';
+
 const STEP = 1 / 60;
 
 /**
@@ -10,17 +12,37 @@ const STEP = 1 / 60;
  */
 class Stage extends React.Component {
 
-    lastUpdate = 0;
+    lastUpdate = 0; // For game loop.
+
+    points = [
+        { x: 50, y: 50 },
+        { x: 50, y: 100 },
+        { x: 100, y: 100 },
+        { x: 100, y: 50 },
+        { x: 150, y: 50 },
+        { x: 150, y: 200 }
+    ];
 
     constructor(props) {
         super(props);
         this.state = {
             towers: [],
-            mobs: [{ x: 200, y: 200 }]
+            mobs: []
         };
 
         this.add = this.add.bind(this);
         this.updadte = this.update.bind(this);
+        this.spawn = this.spawn.bind(this);
+    }
+
+    componentDidMount() {
+        this.interval = setInterval(() => this.updadte(), 1000 / 60);
+        document.addEventListener("keydown", this.spawn, false);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+        document.removeEventListener("keydown", this.spawn, false);
     }
 
     render() {
@@ -36,11 +58,12 @@ class Stage extends React.Component {
                             return <Tower key={i} position={position} />
                         })
                     }
-                </div> 
+                </div>
                 <div>
                     {
-                        this.state.mobs.map((position, i) => {
-                            return <Mob key={i} position={position} />
+                        this.state.mobs.map((mob, i) => {
+                            const { x, y } = mob;
+                            return <Mob key={i} position={{ x, y }} />
                         })
                     }
                 </div>
@@ -61,21 +84,55 @@ class Stage extends React.Component {
         let diff = current - this.lastUpdate;
 
         if (diff >= STEP) {
+            this.state.mobs.forEach(mob => {
+                // https://stackoverflow.com/a/18732777/3833743
+                const target = this.points[mob.target];
+
+                const dx = target.x - mob.x;
+                const dy = target.y - mob.y;
+
+                const direction = Math.atan(dy / dx);
+
+                const speed = 1;
+                const x = mob.x + (speed * Math.cos(direction));
+                const y = mob.y + (speed * Math.sin(direction));
+
+                if (isNaN(x) && isNaN(y)) {
+                    mob.target++;
+                } else {
+                    mob.x = isNaN(x) ? mob.x : x;
+                    mob.y = isNaN(y) ? mob.y : y;
+                }
+
+                console.log(mob);
+            });
+
             this.lastUpdate = current;
-
-            let _mobs = this.state.mobs;
-            _mobs[0].x = (_mobs[0].x + 1) % 800;
-            // _mobs[0].y = (_mobs[0].y + 1) % 300;
-
-            this.setState({ mobs: _mobs });
+            this.forceUpdate();
         }
     }
 
-    componentDidMount() {
-        this.interval = setInterval(() => this.updadte(), 1000 / 60);
-    }
-    componentWillUnmount() {
-        clearInterval(this.interval);
+    spawn(evt) {
+        switch (evt.keyCode) {
+            case KEY_SPACE:
+                let mob = {
+                    target: 1,
+                    x: this.points[0].x,
+                    y: this.points[0].y
+                }
+
+                let _mobs = this.state.mobs;
+                _mobs.push(mob);
+
+                this.setState({
+                    mobs: _mobs
+                });
+
+                break;
+            default:
+                // Do nothing.
+                break
+        }
     }
 }
 
