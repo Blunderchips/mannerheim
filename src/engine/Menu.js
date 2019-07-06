@@ -2,7 +2,7 @@ import React from 'react';
 
 import ParticleEffectButton from 'react-particle-effect-button'
 
-import Menus from './menus.json';
+import Menus from '../data/menus.json';
 
 /**
  * 
