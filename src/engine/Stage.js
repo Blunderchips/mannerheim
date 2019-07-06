@@ -3,7 +3,7 @@ import Tower from './Tower';
 import Board from './Board';
 import Mob from './Mob';
 
-import { KEY_SPACE } from './Util';
+import { KEY_SPACE } from '../Util';
 
 const STEP = 1 / 60;
 
