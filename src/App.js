@@ -2,6 +2,7 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Particles from 'react-particles-js';
+import { AnimatedSwitch } from 'react-router-transition';
 
 import Game from './engine/Game.js';
 import Menu from './engine/Menu.js';
@@ -18,10 +19,17 @@ function App() {
       </ReactCursorPosition> */}
 
       <Router>
-        {/* <Redirect from="/" exact to="/menu" /> */}
-        <Route path="/game/" component={Game} />
-        <Route path="/menu/" component={Menu} />
-        {/* <Route path="/" exact component={NotFound} /> */}
+        <AnimatedSwitch
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+        >
+
+          {/* <Redirect from="/" exact to="/menu" /> */}
+          <Route path="/game/" component={Game} />
+          <Route path="/menu/" component={Menu} />
+          {/* <Route path="/" exact component={NotFound} /> */}
+        </AnimatedSwitch>
       </Router>
 
       <Particles
