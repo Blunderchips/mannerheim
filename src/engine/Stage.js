@@ -84,7 +84,9 @@ class Stage extends React.Component {
         let diff = current - this.lastUpdate;
 
         if (diff >= STEP) {
-            this.state.mobs.forEach(mob => {
+            const mobs = this.state.mobs
+            mobs.forEach(mob => {
+                var i = mobs.indexOf(mob);
                 // https://stackoverflow.com/a/18732777/3833743
                 const target = this.points[mob.target];
 
@@ -104,10 +106,14 @@ class Stage extends React.Component {
                     mob.y = isNaN(y) ? mob.y : y;
                 }
 
-                console.log(mob);
+                // console.log(mob);
+
+                if (mob.target === this.points.length) {
+                    mobs.splice(i, 1);
+                }
             });
 
-            this.lastUpdate = current;
+            this.lastUpdate = current; // timing
             this.forceUpdate();
         }
     }
