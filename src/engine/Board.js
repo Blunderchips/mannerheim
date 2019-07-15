@@ -5,20 +5,6 @@ import React from 'react';
  */
 class Board extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            points: [
-                { x: 50, y: 50 },
-                { x: 50, y: 100 },
-                { x: 100, y: 100 },
-                { x: 100, y: 50 },
-                { x: 150, y: 50 },
-                { x: 150, y: 200 }
-            ]
-        };
-    }
-
     render() {
         return (
             <svg style={{ width: '800', height: '450' }}>
@@ -34,7 +20,7 @@ class Board extends React.Component {
 
     getPoints() {
         let rtn = '';
-        this.state.points.forEach(point => {
+        this.props.points.forEach(point => {
             rtn += `${point.x},${point.y} `;
         });
         return rtn;

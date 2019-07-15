@@ -20,7 +20,9 @@ class Stage extends React.Component {
         { x: 100, y: 100 },
         { x: 100, y: 50 },
         { x: 150, y: 50 },
-        { x: 150, y: 200 }
+        { x: 150, y: 200 },
+        { x: 300, y: 200 },
+        { x: 300, y: 50 },
     ];
 
     constructor(props) {
@@ -67,11 +69,14 @@ class Stage extends React.Component {
                         })
                     }
                 </div>
-                <Board />
+                <Board points={this.points} />
             </div>
         );
     }
 
+    /**
+     * Add new tower to the board.
+     */
     add() {
         let _towers = this.state.towers;
         _towers.push(this.props.position);
@@ -87,6 +92,7 @@ class Stage extends React.Component {
             const mobs = this.state.mobs
             mobs.forEach(mob => {
                 var i = mobs.indexOf(mob);
+
                 // https://stackoverflow.com/a/18732777/3833743
                 const target = this.points[mob.target];
 
@@ -113,8 +119,8 @@ class Stage extends React.Component {
                 }
             });
 
-            this.lastUpdate = current; // timing
-            this.forceUpdate();
+            this.lastUpdate = current;  // timing
+            this.forceUpdate();         // Refresh screen
         }
     }
 
