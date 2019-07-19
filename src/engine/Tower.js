@@ -1,5 +1,7 @@
 import React from "react";
 
+export const TOWER_SIZE = 32;
+
 /**
  * Tower.
  */
@@ -13,12 +15,12 @@ class Tower extends React.Component {
 
     render() {
         const towerStyle = {
-            width: '5%',
+            width: `${TOWER_SIZE}`,
             height: 'auto',
             position: 'absolute',
             left: this.props.position.x,
             top: this.props.position.y,
-            margin: '-2.5%' // Centre mob on position
+            margin: `-${TOWER_SIZE / 2}` // Centre mob on position
         };
 
         return (
