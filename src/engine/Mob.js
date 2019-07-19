@@ -1,9 +1,10 @@
 import React from "react";
 
 /**
- * Precentage size of the Mob.
+ * Size of the Mob.
  */
-const SIZE = 2.5;
+export const MOB_SIZE = 24;
+
 
 /**
  * Mobile.
@@ -12,12 +13,12 @@ class Mob extends React.Component {
 
     render() {
         const mobStyle = {
-            width: `${SIZE}%`,
+            width: `${MOB_SIZE}`,
             height: 'auto',
             position: 'absolute',
             left: this.props.position.x,
             top: this.props.position.y,
-            margin: `-${SIZE / 2}%` // Centre mob on position
+            margin: `-${MOB_SIZE / 2}` // Centre mob on position
         };
 
         return (
