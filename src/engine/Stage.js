@@ -1,9 +1,9 @@
 import React from 'react';
-import Tower from './Tower';
+import Tower, { TOWER_SIZE } from './Tower';
 import Board from './Board';
 import Mob from './Mob';
 
-import { KEY_SPACE } from '../Util';
+import Util, { KEY_SPACE } from '../Util';
 
 const STEP = 1 / 60;
 
@@ -32,7 +32,7 @@ class Stage extends React.Component {
             mobs: []
         };
 
-        this.add = this.add.bind(this);
+        this.addTower = this.addTower.bind(this);
         this.updadte = this.update.bind(this);
         this.spawn = this.spawn.bind(this);
     }
@@ -49,7 +49,7 @@ class Stage extends React.Component {
 
     render() {
         return (
-            <div onClick={this.add}
+            <div onClick={this.addTower}
                 style={{
                     width: 800,
                     height: 450
@@ -77,9 +77,25 @@ class Stage extends React.Component {
     /**
      * Add new tower to the board.
      */
-    add() {
+    addTower() {
+        const TOWER_SIZE2 = TOWER_SIZE * TOWER_SIZE;
+        const position = this.props.position;
+
+        let tooSmall = false;
+        this.state.towers.forEach(i => {
+            if (Util.dist2(position, i) <= TOWER_SIZE2) {
+                console.error('Too small');
+                tooSmall = true;
+                return;
+            }
+        });
+
+        if (tooSmall) {
+            return;
+        }
+
         let _towers = this.state.towers;
-        _towers.push(this.props.position);
+        _towers.push(position);
 
         this.setState({ towers: _towers });
     }
