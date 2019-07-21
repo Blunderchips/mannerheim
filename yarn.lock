@@ -1282,7 +1282,7 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
-"@types/bootstrap@^4.3.0":
+"@types/bootstrap@^4.3.1":
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/@types/bootstrap/-/bootstrap-4.3.1.tgz#15fa89a4d275b114a4eceb90909d4eb8b90d43f5"
   integrity sha512-n7Zv7Y+C98Yv4oqbyqGn3alCvNRCya2xMYzOdVEnmnFlu04MXQk1ntVrBhXzDkiwhZZYNkNfBZn2yhTnEh/mHQ==
