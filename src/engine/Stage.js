@@ -3,7 +3,6 @@ import Tower, { TOWER_SIZE } from './Tower';
 import Board from './Board';
 import Mob, { MOB_SIZE } from './Mob';
 import Bullet, { BULLET_SIZE } from './Bullet';
-
 import Util, { KEY_SPACE } from '../Util';
 
 const STEP = 1 / 60;
@@ -36,17 +35,17 @@ class Stage extends React.Component {
 
         this.addTower = this.addTower.bind(this);
         this.updadte = this.update.bind(this);
-        this.spawn = this.spawn.bind(this);
+        this.spawnMob = this.spawnMob.bind(this);
     }
 
     componentDidMount() {
         this.interval = setInterval(() => this.updadte(), 1000 / 60);
-        document.addEventListener("keydown", this.spawn, false);
+        document.addEventListener("keydown", this.spawnMob, false);
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
-        document.removeEventListener("keydown", this.spawn, false);
+        document.removeEventListener("keydown", this.spawnMob, false);
     }
 
     render() {
@@ -159,11 +158,12 @@ class Stage extends React.Component {
                             const bullet = {
                                 x: tower.x,
                                 y: tower.y,
-                                angle: Util.angle(tower, mob)
+                                angle: Util.angle(tower, mob),
+                                damage: 20
                             };
                             _bullets.push(bullet);
 
-                            console.log(bullet);
+                            // console.log(bullet);
 
                             this.setState({ bullets: _bullets });
                         }
@@ -188,7 +188,8 @@ class Stage extends React.Component {
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < (BULLET_SIZE + MOB_SIZE) / 2) {
-                        console.log('hit');
+                        // console.log('hit');
+                        this.hit(mob, bullet);
                         hit = true;
                     }
                 });
@@ -203,13 +204,14 @@ class Stage extends React.Component {
         }
     }
 
-    spawn(evt) {
+    spawnMob(evt) {
         switch (evt.keyCode) {
             case KEY_SPACE:
                 let mob = {
                     target: 1,
                     x: this.points[0].x,
                     y: this.points[0].y,
+                    health: 100
                 }
 
                 let _mobs = this.state.mobs;
@@ -223,6 +225,14 @@ class Stage extends React.Component {
             default:
                 // Do nothing.
                 break
+        }
+    }
+
+    hit(mob, bullet) {
+        mob.health -= bullet.damage;
+        if (mob.health <= 0) {
+            const mobs = this.state.mobs;
+            mobs.splice(mobs.indexOf(mob), 1);
         }
     }
 }
