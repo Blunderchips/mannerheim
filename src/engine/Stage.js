@@ -2,6 +2,7 @@ import React from 'react';
 import Tower, { TOWER_SIZE } from './Tower';
 import Board from './Board';
 import Mob from './Mob';
+import Bullet from './Bullet';
 
 import Util, { KEY_SPACE } from '../Util';
 
@@ -29,7 +30,8 @@ class Stage extends React.Component {
         super(props);
         this.state = {
             towers: [],
-            mobs: []
+            mobs: [],
+            bullets: []
         };
 
         this.addTower = this.addTower.bind(this);
@@ -69,6 +71,14 @@ class Stage extends React.Component {
                         })
                     }
                 </div>
+                <div>
+                    {
+                        this.state.bullets.map((mob, i) => {
+                            const { x, y } = mob;
+                            return <Bullet key={i} position={{ x, y }} />
+                        })
+                    }
+                </div>
                 <Board points={this.points} />
             </div>
         );
@@ -84,7 +94,7 @@ class Stage extends React.Component {
         let tooSmall = false;
         this.state.towers.forEach(i => {
             if (Util.dist2(position, i) <= TOWER_SIZE2) {
-                console.error('Too small');
+                console.error('Too small'); // TODO: better message
                 tooSmall = true;
                 return;
             }
@@ -93,6 +103,12 @@ class Stage extends React.Component {
         if (tooSmall) {
             return;
         }
+
+        const range = 50;
+        position.range2 = range * range;
+
+        position.rateOfFire = 0.25 * 1000;
+        position.lastFire = 0;
 
         let _towers = this.state.towers;
         _towers.push(position);
@@ -107,7 +123,7 @@ class Stage extends React.Component {
         if (diff >= STEP) {
             const mobs = this.state.mobs
             mobs.forEach(mob => {
-                var i = mobs.indexOf(mob);
+                let i = mobs.indexOf(mob);
 
                 // https://stackoverflow.com/a/18732777/3833743
                 const target = this.points[mob.target];
@@ -132,7 +148,31 @@ class Stage extends React.Component {
 
                 if (mob.target === this.points.length) {
                     mobs.splice(i, 1);
+                } else {
+                    this.state.towers.forEach(tower => {
+                        if (current >= tower.lastFire + tower.rateOfFire &&
+                            Util.dist2(mob, tower) <= tower.range2) {
+                            // console.log('bang', tower);
+                            tower.lastFire = current;
+
+                            let _bullets = this.state.bullets;
+                            const bullet = {
+                                x: tower.x,
+                                y: tower.y,
+                                angle: Util.angle(tower, mob)
+                            };
+                            _bullets.push(bullet);
+
+                            console.log(bullet);
+
+                            this.setState({ bullets: _bullets });
+                        }
+                    });
                 }
+            });
+
+            this.state.bullets.forEach(bullet => {
+                Util.movePointAtAngle(bullet, bullet.angle * 0.0174533, 5)
             });
 
             this.lastUpdate = current;  // timing
@@ -146,7 +186,7 @@ class Stage extends React.Component {
                 let mob = {
                     target: 1,
                     x: this.points[0].x,
-                    y: this.points[0].y
+                    y: this.points[0].y,
                 }
 
                 let _mobs = this.state.mobs;
