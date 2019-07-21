@@ -1,8 +1,8 @@
 import React from 'react';
 import Tower, { TOWER_SIZE } from './Tower';
 import Board from './Board';
-import Mob from './Mob';
-import Bullet from './Bullet';
+import Mob, { MOB_SIZE } from './Mob';
+import Bullet, { BULLET_SIZE } from './Bullet';
 
 import Util, { KEY_SPACE } from '../Util';
 
@@ -104,7 +104,7 @@ class Stage extends React.Component {
             return;
         }
 
-        const range = 50;
+        const range = 200;
         position.range2 = range * range;
 
         position.rateOfFire = 0.25 * 1000;
@@ -171,8 +171,31 @@ class Stage extends React.Component {
                 }
             });
 
-            this.state.bullets.forEach(bullet => {
-                Util.movePointAtAngle(bullet, bullet.angle * 0.0174533, 5)
+            const bullets = this.state.bullets;
+            bullets.forEach(bullet => {
+                Util.movePointAtAngle(bullet, bullet.angle * 0.0174533, 5);
+
+                let hit = false;
+                const i = bullets.indexOf(bullet);
+
+                this.state.mobs.forEach(mob => {
+                    if (hit) {
+                        return;
+                    }
+
+                    const dx = bullet.x - mob.x;
+                    const dy = bullet.y - mob.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < (BULLET_SIZE + MOB_SIZE) / 2) {
+                        console.log('hit');
+                        hit = true;
+                    }
+                });
+
+                if (hit) {
+                    bullets.splice(i, 1);
+                }
             });
 
             this.lastUpdate = current;  // timing
