@@ -9,6 +9,8 @@ import Menus from '../data/menus.json';
  */
 class Menu extends React.Component {
 
+    static MENU_BUTTON_CLICK = new Audio('https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3');
+
     constructor(props) {
         super(props);
         this.state = {
@@ -53,6 +55,8 @@ class Menu extends React.Component {
         this.setState({
             buttons: _buttons
         });
+
+        Menu.MENU_BUTTON_CLICK.play();
     }
 
     isBtnHidden(btnID) {
